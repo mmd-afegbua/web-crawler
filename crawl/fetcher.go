@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"github.com/mmd-afegbua/web-crawler/utils"
+	"github.com/antoniou/go-crawler/util"
 )
 
 // Fetcher is an assynchronous worker interface
@@ -36,14 +36,14 @@ type RequestQueue chan url.URL
 // Channel that gets incoming requests
 type FetchResponseQueue chan *FetchMessage
 
-type AsHTTPFetcher struct (
+type AsHTTPFetcher struct {
 	*AsWorker // found in ./worker.go
 
 	requestQueue *RequestQueue
 	responeQueue *FetchResponseQueue
 
 	client HTTPClient
-)
+}
 
 // NewAsHTTPFetcher is a contructor for AsHTTPFetcher
 // It does not start the Fetcher; run does
